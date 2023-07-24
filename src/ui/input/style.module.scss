@@ -1,0 +1,97 @@
+.input {
+  background: none;
+  border: none;
+  outline: none;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 300;
+  color: #2d3031;
+  padding: 0 0 7px;
+  position: relative;
+  -webkit-appearance: none;
+  appearance: none;
+
+  border-bottom: 2px solid #60c7e2;
+
+  &:focus {
+    outline: none;
+  }
+
+  /* Убирает синюю заливку при автокомплите */
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    /* Hack from http://stackoverflow.com/a/29350537 */
+    transition: background-color 999999s ease-in-out 0s;
+  }
+
+  &:-webkit-autofill {
+    animation: onautofillstart 999999s forwards;
+  }
+
+  &:not(:-webkit-autofill) {
+    /* Позволяет отслеживать autofill через js */
+    animation: onautofillcancel 999999s;
+  }
+
+  // убирает нативные стрелочки number
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  /* Firefox */
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+.block {
+  width: 100%;
+}
+
+.error {
+  border-bottom: 2px solid #f00;
+}
+
+.succes {
+  border-bottom: 2px solid rgb(0, 182, 0);
+}
+
+.focusVisible {
+  border-color: orangered;
+}
+
+.inputWrapper {
+  position: relative;
+  flex-grow: 1;
+}
+
+.label {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  font-size: 16px;
+  color: #8e8e8e;
+  transition: all 0.2s ease;
+
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transform-origin: left top;
+}
+
+.filled {
+  transform: translateY(-30px) scale(0.875);
+}
+
+@keyframes onautofillcancel {
+  from {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.01);
+  }
+}

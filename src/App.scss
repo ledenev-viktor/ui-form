@@ -1,0 +1,37 @@
+@import url(./variables.scss);
+
+body {
+  background: #333;
+}
+
+.b-fields-head {
+  & {
+    margin-bottom: 30px;
+  }
+  .fields-head {
+    &__title {
+      font-size: 22px;
+      font-weight: 500;
+      color: #2d3031;
+      margin-bottom: 10px;
+    }
+
+    &__description {
+      color: #2d3031;
+      font-weight: 400;
+      font-size: 17px;
+    }
+  }
+}
+
+.b-group-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #2d3031;
+  margin-bottom: 20px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}

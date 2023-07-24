@@ -1,0 +1,20 @@
+.checkboxesList {
+}
+
+.vertical {
+}
+
+.vertical {
+  display: block;
+}
+
+.gorizontal {
+  display: flex;
+  flex-wrap: wrap;
+
+  & > *:not(:last-child) {
+    margin-right: 40px;
+    display: inline-flex;
+    width: auto;
+  }
+}

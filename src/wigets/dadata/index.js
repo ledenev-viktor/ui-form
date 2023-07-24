@@ -1,0 +1,1 @@
+export { Dadata } from "./component";
