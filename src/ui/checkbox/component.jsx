@@ -1,8 +1,7 @@
 import { FieldWrapper } from "../fieldWrapper/component";
 import cn from "classnames";
 import cls from "./styles.module.scss";
-import { Checmark } from "./checkmark";
-import { forwardRef, useState } from "react";
+import { forwardRef } from "react";
 
 export const Checkbox = forwardRef(
   (

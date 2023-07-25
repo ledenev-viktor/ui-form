@@ -1,3 +1,3 @@
-import { Input, CheckGrup, Checkbox, Separator } from "./input/input";
+import { Input, CheckGroup, Checkbox, Separator } from "./input/input";
 
-export { Input, CheckGrup, Checkbox, Separator };
+export { Input, CheckGroup, Checkbox, Separator };

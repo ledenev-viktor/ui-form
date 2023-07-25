@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Steps } from "./steps";
 import { Controller, useForm } from "react-hook-form";
 import { Input } from "../../ui/input";
@@ -7,6 +7,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { CheckboxGroup } from "../../ui/checkboxGroup/component";
 import * as yup from "yup";
 import { Dadata } from "../dadata";
+import { RadioGroup, RadioSingle } from "../../ui/radio-group";
+import { Attach } from "../../ui/attach";
 
 const html = `
 <div class="b-fields-head">
@@ -68,11 +70,40 @@ export const FormSteps = (props) => {
   const address = register("address");
   const inn = register("inn");
 
+  const [files, setFiles] = React.useState([]);
+  const handleChangeFile = (event, payload) => {
+    setFiles([...files, ...payload.files]);
+  };
+  useEffect(() => {
+    console.log(files);
+  }, [files]);
+
   const steps = [
     {
       name: "step_1",
       nameFields: ["username", "username2"],
       fields: [
+        <Attach
+          id="attach"
+          {...register("file")}
+          value={files}
+          onChange={handleChangeFile}
+          multiple={true}
+          name="file"
+          onClear={() => setFiles([])}
+        />,
+        <Controller
+          control={control}
+          name="radioGr"
+          defaultValue={false}
+          render={({ field: { value, onChange } }) => (
+            <RadioGroup value={value} name="radioGroup" onChange={onChange}>
+              <RadioSingle value="yes" label="Да" />
+              <RadioSingle value="no" label="Нет" />
+              <RadioSingle value="hz" label="Не знаю" />
+            </RadioGroup>
+          )}
+        />,
         <Dadata
           block
           idAddress="address"

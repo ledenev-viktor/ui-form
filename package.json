@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@alfalab/core-components-attach": "^6.1.1",
+    "@alfalab/core-components-radio": "^3.0.6",
+    "@alfalab/core-components-radio-group": "^3.0.8",
     "@hookform/resolvers": "^3.1.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

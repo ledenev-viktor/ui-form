@@ -11,6 +11,8 @@ const MULTIPLE_TEXTS = ["файл", "файла", "файлов"];
 export const Attach = forwardRef(
   (
     {
+      id,
+      name,
       fieldWrapperProps = {},
       multiple,
       onChange,
@@ -82,7 +84,7 @@ export const Attach = forwardRef(
 
     return (
       <FieldWrapper {...fieldWrapperProps}>
-        <button
+        <div
           className={cn(cls.attachButton)}
           onClick={handleButtonClick}
           ref={buttonRef}
@@ -95,9 +97,11 @@ export const Attach = forwardRef(
               <div>{buttonContent}</div>
             )}
           </span>
-        </button>
+        </div>
         <label ref={labelRef}>
           <input
+            id={id}
+            name={name}
             {...props}
             multiple={multiple}
             tabIndex={-1}

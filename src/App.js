@@ -1,14 +1,17 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import "./App.scss";
 import { Input } from "./ui/input";
 import { LayoutPage } from "./layout";
 import { Checkbox } from "./ui/checkbox";
 import { SeparatorField } from "./ui/separator";
-import { CheckGrup } from "./ui/checkbox-grop";
+import { CheckGroup } from "./ui/checkbox-grop";
 import { LayoutQuestionnaire } from "./layout/layout-questionnaire";
 import { FormSteps } from "./wigets/multisteps-form";
 import { Dadata } from "./wigets/dadata";
 import { Attach } from "./ui/attach";
+import { RadioGr, RadioSingle } from "./ui/radio-group";
+import { Radio } from "@alfalab/core-components-radio";
+import { RadioGroup } from "@alfalab/core-components-radio-group";
 
 const html = `
 <div class="b-fields-head">
@@ -46,6 +49,20 @@ const arrayCheck = [
 ];
 // checkbox-group
 function App() {
+  const [valueRadio, setValueRadio] = useState("");
+
+  const onChangeRadioGraoup = (_, payload) => {
+    setValueRadio(payload.value);
+    console.log(valueRadioAlfa);
+  };
+
+  const [valueRadioAlfa, setValueRadioAlfa] = useState("");
+
+  const onChangeRadioGraoupAlfa = (_, payload) => {
+    setValueRadio(payload.value);
+    console.log(valueRadioAlfa);
+  };
+
   return (
     // <Fragment>
     //   <LayoutPage>
@@ -53,7 +70,7 @@ function App() {
     //     <SeparatorField htmlChild={htmlSeparator} block />
     //     <Checkbox block={true} label={checkLabel} />
     //     <SeparatorField htmlChild={htmlSeparator} block />
-    //     <CheckGrup
+    //     <CheckGroup
     //       direction="gorizontal"
     //       htmlTitle={`<div class="b-group-title">А) Гарантийное обслуживание ПО осуществляется:</div>`}
     //       arrayCheckboxes={arrayCheck}
@@ -66,13 +83,13 @@ function App() {
       <SeparatorField htmlChild={htmlSeparator} block />
       <Checkbox block={true} label={checkLabel} />
       <SeparatorField htmlChild={htmlSeparator} block />
-      <CheckGrup
+      <CheckGroup
         direction="gorizontal"
         htmlTitle={`<div class="b-group-title">А) Гарантийное обслуживание ПО осуществляется:</div>`}
         arrayCheckboxes={arrayCheck}
       /> */}
       <FormSteps />
-      <Dadata block />
+      {/* <Dadata block /> */}
 
       <Attach multiple buttonContent="Загрузить реквизиты" />
     </LayoutQuestionnaire>

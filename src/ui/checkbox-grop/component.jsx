@@ -3,7 +3,7 @@ import cls from "./style.module.scss";
 import { Checkbox } from "../checkbox/component";
 import { FieldWrapper } from "../fieldWrapper";
 
-export const CheckGrup = ({
+export const CheckGroup = ({
   value,
   onChange,
   arrayCheckboxes,
