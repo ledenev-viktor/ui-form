@@ -3,7 +3,7 @@ import cls from "./style.module.scss";
 import cn from "classnames";
 import { FieldWrapper } from "../fieldWrapper";
 import { useFocus } from "../../hooks/useFocus";
-import { mergeRefs } from "react-merge-refs";
+import mergeRefs from "react-merge-refs";
 
 export const Input = forwardRef(
   (

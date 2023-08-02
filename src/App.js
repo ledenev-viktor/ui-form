@@ -12,7 +12,6 @@ import { Attach } from "./ui/attach";
 import { RadioGr, RadioSingle } from "./ui/radio-group";
 import { Radio } from "@alfalab/core-components-radio";
 import { RadioGroup } from "@alfalab/core-components-radio-group";
-
 const html = `
 <div class="b-fields-head">
     <div class="fields-head__title">
@@ -91,7 +90,7 @@ function App() {
       <FormSteps />
       {/* <Dadata block /> */}
 
-      <Attach multiple buttonContent="Загрузить реквизиты" />
+      {/* <Attach multiple buttonContent="Загрузить реквизиты" /> */}
     </LayoutQuestionnaire>
   );
 }

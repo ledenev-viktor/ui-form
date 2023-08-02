@@ -6,7 +6,7 @@ import cn from "classnames";
 import cls from "./style.module.scss";
 import { Suggestions } from "./ui/suggestions";
 import { useFocus } from "../../hooks/useFocus";
-import { mergeRefs } from "react-merge-refs";
+import mergeRefs from "react-merge-refs";
 
 export const Dadata = ({
   block,

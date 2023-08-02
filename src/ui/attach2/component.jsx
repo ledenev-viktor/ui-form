@@ -8,7 +8,7 @@ import { truncateFilename, pluralize } from "./utils";
 
 const MULTIPLE_TEXTS = ["файл", "файла", "файлов"];
 
-export const Attach = forwardRef(
+export const Attach2 = forwardRef(
   (
     {
       id,
@@ -18,21 +18,20 @@ export const Attach = forwardRef(
       onChange,
       onClear,
       accept,
+      error,
       buttonProps,
       maxFilenameLength,
       defaultValue,
-      value,
+      setFormData,
       buttonContent = "Выберите файл",
       icon = <AttachIcon />,
       ...props
     },
     ref
   ) => {
-    const uncontrolled = value === undefined;
-
+    const [value, setValue] = useState("");
     const [files, setFiles] = useState(defaultValue || []);
 
-    const inputRef = useRef(null);
     const labelRef = useRef(null);
     const buttonRef = useRef(null);
 
@@ -41,16 +40,12 @@ export const Attach = forwardRef(
         ? Array.from(event.target.files)
         : [];
 
-      if (onChange) {
-        onChange(event, { files: filesArray });
-      }
+      setFormData(name, event.target.files);
 
-      if (uncontrolled && event.target.files) {
+      setValue(event.target.value);
+
+      if (event.target.files) {
         setFiles(filesArray);
-      }
-
-      if (inputRef.current) {
-        inputRef.current.value = "";
       }
     };
 
@@ -72,15 +67,10 @@ export const Attach = forwardRef(
         </span>
       );
 
-    // const handleClearClick = (ev) => {
-    //   if (uncontrolled) {
-    //     setFiles([]);
-    //   }
-
-    //   if (onClear) {
-    //     onClear(ev);
-    //   }
-    // };
+    const handleClear = () => {
+      setFiles([]);
+      setFormData(name, null);
+    };
 
     return (
       <FieldWrapper {...fieldWrapperProps}>
@@ -97,19 +87,22 @@ export const Attach = forwardRef(
               <div>{buttonContent}</div>
             )}
           </span>
+          {files.length > 0 && <span onClick={handleClear}>x</span>}
+          {error && <div>{error}</div>}
         </div>
         <label ref={labelRef}>
           <input
             id={id}
+            ref={ref}
             name={name}
-            {...props}
-            multiple={multiple}
             tabIndex={-1}
             accept={accept}
-            onChange={handleInputChange}
-            ref={mergeRefs([ref, inputRef])}
-            type="file"
             className={cn(cls.input)}
+            multiple={multiple}
+            type="File"
+            onChange={handleInputChange}
+            value={value}
+            {...props}
           />
         </label>
       </FieldWrapper>
